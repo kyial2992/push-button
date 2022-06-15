@@ -1,5 +1,5 @@
 variable region {
     description = "Please provide a region"
-    type= string
+    type = string
     default = ""
 }
