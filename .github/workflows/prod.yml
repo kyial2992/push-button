@@ -3,7 +3,7 @@ name: Push button
 on:
   push:
     paths:
-      - 'envs/regions/dev.tfvars'
+      - 'envs/regions/prod.tfvars'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -23,11 +23,11 @@ jobs:
       - name: Initialize backend
         run: |
           terraform init -reconfigure
-          terraform workspace select dev || terraform workspace new dev
+          terraform workspace select prod || terraform workspace new prod
       # Runs a set of commands using the runners shell
       - name: Execute apply
         run: |
-          terraform apply -var-file envs/regions/dev.tfvars  --auto-approve
+          terraform apply -var-file envs/regions/prod.tfvars  --auto-approve
 
 
 
