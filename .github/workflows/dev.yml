@@ -31,8 +31,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Initialize backend
         run: |
+        terraform init -reconfigure
         terraform workspace select dev || terraform workspace new dev
-        terraform init
 
       # Runs a set of commands using the runners shell
       - name: Execute apply
