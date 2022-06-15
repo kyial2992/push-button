@@ -1,9 +1,9 @@
 # This is a basic workflow to help you get started with Actions
-name: Push button for prod
+name: Push button for dev
 on:
   push:
     paths:
-      - 'envs/regions/prod.tfvars'
+      - 'envs/regions/dev.tfvars'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -23,11 +23,11 @@ jobs:
       - name: Initialize backend
         run: |
           terraform init -reconfigure
-          terraform workspace select prod || terraform workspace new prod
+          terraform workspace select dev || terraform workspace new dev
       # Runs a set of commands using the runners shell
       - name: Execute apply
         run: |
-          terraform apply -var-file envs/regions/prod.tfvars  --auto-approve
+          terraform apply -var-file envs/regions/dev.tfvars  --auto-approve
 
 
 
